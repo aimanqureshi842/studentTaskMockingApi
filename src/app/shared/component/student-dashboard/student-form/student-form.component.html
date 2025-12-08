@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-body">
+        <form #studentForm="ngForm" (ngSubmit)="studentAdd()">
+            <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input type="text" class="form-control" ngModel name="fullName" #fullName="ngModel" required
+                    pattern="^[A-Za-z]+(?: [A-Za-z]+)*$" minlength="6" maxlength="50">
+
+                <ng-container *ngIf="fullName.dirty">
+                    <strong class="text-danger" *ngIf="fullName.hasError('pattern')">
+                        Enter a valid full name (letters and space only).
+                    </strong>
+                    <strong class="text-danger" *ngIf="fullName.hasError('minlength')">
+                        Full Name must be at least {{fullName.errors?.['minlength'].requiredLength}} characters long .
+                    </strong>
+
+                </ng-container>
+                <strong class="text-danger" *ngIf="fullName.touched && fullName.hasError('required')">
+                    Full Name is required .
+                </strong>
+                <strong class="text-info" *ngIf="fullName.value?.length==50">
+                    Full Name cannot exceed 50 characters.
+                </strong>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="text" class="form-control" pattern="^[6-9][0-9]{9}$" maxlength="10" ngModel
+                    name="contact" #contact="ngModel" required>
+                <strong class="text-danger" *ngIf="contact.touched && contact.hasError('required')">
+                    Contact is required .
+                </strong>
+                <strong class="text-danger" *ngIf="contact.dirty && contact.hasError('pattern')">
+                    Please enter a valid 10-digit Indian mobile number .
+                </strong>
+                <strong class="text-info" *ngIf="contact.value?.length==10">
+                    Contact number cannot be more than 10 digits.
+                </strong>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" ngModel name="email" #email="ngModel" required
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                <strong class="text-danger" *ngIf="email.touched && email.hasError('required')">
+                    Email is required .
+                </strong>
+                <strong class="text-danger  " *ngIf="email.dirty && email.hasError('pattern')">
+                    Please enter a valid email address (example: name@gmail.com).
+                </strong>
+            </div>
+            <button mat-raised-button *ngIf="!isInEditMode;else inedit"   color="primary" type="submit" >Add Student</button>
+            <ng-template #inedit>
+                <button mat-raised-button color="primary" type="button" (click)="updateStd()">Update Student</button>
+            </ng-template>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="table responsive">
+    <table class="table-bordered table-hover" *ngIf="studentArr.length>0 ;else nodata">
+        <thead>
+            <tr>
+                <th>Sr no</th>
+                <th>Full Name</th>
+                <th>contact</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of studentArr;let i=index;trackBy:trackById">
+                <td>{{i+1}}</td>
+                <td>{{student.fullName|titlecase}}</td>
+                <td>{{student.contact}}</td>
+                <td>{{student.email|titlecase}}</td>
+                <td>
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon" (click)="editStd(student)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+                <td>
+                    <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" (click)="removeStd(student.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #nodata>
+        <p class="alert alert-info">
+            No data added to table yet
+        </p>
+    </ng-template>
+</div>

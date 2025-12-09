@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-body">
+        <form #postForm="ngForm" (ngSubmit)="addPost()">
+            <div class="form-group">
+                <label for="title"><strong>Title</strong></label>
+                <input type="text" class="form-control" ngModel name="title" #title="ngModel" required>
+                <strong class="text-danger" *ngIf="title.touched && title.hasError('required')">
+                 title is required .
+                </strong>
+            </div>
+            <div class="form-group">
+                <label for="content"><strong>Content</strong></label>
+                <textarea id="content" class="form-control" rows="4" ngModel name="content" #content="ngModel"
+                    required></textarea>
+                    <strong class="text-danger" *ngIf="content.touched && content.hasError('required')">
+                     content is required .
+                    </strong>
+            </div>
+            <button mat-stroked-button color="primary" type="submit" *ngIf="!isInEditMode;else inedit">Add Post</button>
+            <ng-template #inedit>
+                <button mat-stroked-button color="primary" type="button" (click)="updatePost()">Update Post</button>
+            </ng-template>
+
+        </form>
+    </div>
+</div>

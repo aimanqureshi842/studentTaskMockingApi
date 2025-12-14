@@ -57,6 +57,7 @@ export class PostFormComponent implements OnInit {
         id: this.editedPost.id
       }
       this.isInEditMode = false;
+      this._postSer.editedIdFlag$.next('')
       this._postSer.updatePost(updatedPost)
         .subscribe({
           next: res => {
@@ -68,7 +69,7 @@ export class PostFormComponent implements OnInit {
         })
       this.postForm.reset();
 
-    }else{
+    } else {
       alert('Fill all the field to update !')
     }
   }

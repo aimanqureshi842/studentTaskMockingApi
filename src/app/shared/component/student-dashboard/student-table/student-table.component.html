@@ -22,7 +22,7 @@
                     </button>
                 </td>
                 <td>
-                    <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" (click)="removeStd(student.id)">
+                    <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" (click)="removeStd(student.id)" [disabled]="student.id===editedId">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

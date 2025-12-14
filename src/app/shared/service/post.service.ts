@@ -62,7 +62,8 @@ export class PostService {
   constructor() {
 
    }
- posts$:Subject<Ipost>=new Subject()
+ posts$:Subject<Ipost>=new Subject();
+ editedIdFlag$:Subject<string>=new Subject<string>();
 fetchAllPost():Observable<Ipost[]>{
  return of(this.posts) 
 }
@@ -77,10 +78,8 @@ addPost(newPost:Ipost):Observable<IgenericObservableType<Ipost>>{
 }
 
 removePost(id:string):Observable<IgenericObservableType<string>>{
-  if(confirm('Are you sure you want to remove this post ?')){
     let getIndex=this.posts.findIndex(post=>post.id===id);
     this.posts.splice(getIndex,1);
-  }
   return of({
     status:'success',
     message:`post with id "${id}" removed successfully !`,

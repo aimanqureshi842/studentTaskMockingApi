@@ -29,7 +29,7 @@ export class StudentService {
 
   constructor() { }
 editObj$:Subject<Istudent>=new Subject()
-
+stdUpdateFlag$:Subject<string>=new Subject<string>()
 fetchAllStudent():Observable<Istudent[]>{
   return of(this.students)
 }
@@ -40,10 +40,8 @@ addStudent(newObj:Istudent):Observable<Istudent>{
 }
 
 removeStd(id:string):Observable<string>{
-  if(confirm('Are you sure you want to remove this student?')){
     let getIndex=this.students.findIndex(std=>std.id===id);
     this.students.splice(getIndex,1)
-  }
   return of(id)
 }
 

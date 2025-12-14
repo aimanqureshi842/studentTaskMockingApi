@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { PostDashboardComponent } from './shared/component/post-dashboard/post-dashboard.component';
 import { PostCardComponent } from './shared/component/post-dashboard/post-card/post-card.component';
 import { PostFormComponent } from './shared/component/post-dashboard/post-form/post-form.component';
+import { GetconfirmComponent } from './shared/component/getconfirm/getconfirm.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostFormComponent } from './shared/component/post-dashboard/post-form/p
     StudentTableComponent,
     PostDashboardComponent,
     PostCardComponent,
-    PostFormComponent
+    PostFormComponent,
+    GetconfirmComponent
   ],
   imports: [
     BrowserModule,

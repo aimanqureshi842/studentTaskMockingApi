@@ -1,0 +1,7 @@
+<p>
+   {{msg||'Are you sure , You want to remove ?'}}
+</p>
+<div class="text-right">
+    <button mat-raised-button color="primary" class="mr-2 rounded-pill" (click)="onClose(false)">Cancel</button>
+    <button mat-raised-button color="warn" class="rounded-pill" (click)="onClose(true)">Delete</button>
+</div>

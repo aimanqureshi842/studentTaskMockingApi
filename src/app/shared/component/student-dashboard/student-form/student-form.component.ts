@@ -55,6 +55,7 @@ updateStd(){
       id:this.editedObj.id
     }
     this.isInEditMode=false;
+    this._studentSer.stdUpdateFlag$.next('')
     this.studentForm.reset()
     this._studentSer.updatStd(updatedObj)
     .subscribe({
